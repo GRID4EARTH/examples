@@ -1,0 +1,13 @@
+xarray>=2025.1
+zarr>=3.1
+numcodecs>=0.16
+fsspec
+aiohttp
+pystac-client
+xdggs>=0.7
+healpix-geo>=0.4
+healpix-plot>=2026.7
+# Sentinel-2 codecs (hcc-sentinel2-pyramid)
+healpix-compress[jpegxl]>=0.4.1
+matplotlib
+cartopy
