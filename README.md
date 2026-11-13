@@ -5,7 +5,7 @@ Worked, runnable examples on the data GRID4EARTH publishes on the HEALPix grid o
 | Notebook | What it shows |
 |---|---|
 | [01 – Sentinel-2: find, open, extract and plot at several resolutions](notebooks/01-sentinel-2-find-open-plot.ipynb) | Find the store of a place in the STAC catalogue or from its coordinates alone, open it with Xarray and xdggs, read a point and a region, plot the same area at levels 14, 17 and 20. |
-| 02 – Sentinel-2, Sentinel-3 and ERA5 on one grid (in preparation) | Combine products of the same day (2026-08-12) without regridding. |
+| [02 – Mixing products on one grid: Sentinel-2, Sentinel-3, Copernicus DEM and ERA5](notebooks/02-mixing-products-on-one-grid.ipynb) | Read the same cells from four stores with different layouts and resolutions, put them in one dataset without regridding, plot them side by side, compare Sentinel-2 with Sentinel-3 cell for cell, group a vegetation index by elevation, and zoom in to a finer level. |
 
 ## Run them
 
