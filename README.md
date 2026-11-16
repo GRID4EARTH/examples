@@ -5,7 +5,7 @@ Worked, runnable examples on the data GRID4EARTH publishes on the HEALPix grid o
 | Notebook | What it shows |
 |---|---|
 | [01 – Sentinel-2: find, open, extract and plot at several resolutions](notebooks/01-sentinel-2-find-open-plot.ipynb) | Find the store of a place in the STAC catalogue or from its coordinates alone, open it with Xarray and xdggs, read a point and a region, plot the same area at levels 14, 17 and 20. A second route to the same cells: the Icechunk mosaic, a pass stack with a time axis. All addresses and identifiers sit in one configuration cell. |
-| [02 – Mixing products on one grid: Sentinel-2, Sentinel-3, Copernicus DEM and ERA5](notebooks/02-mixing-products-on-one-grid.ipynb) | Read the same cells from four stores with different layouts and resolutions, put them in one dataset without regridding, plot them side by side, compare Sentinel-2 with Sentinel-3 cell for cell, group a vegetation index by elevation, subset by region (a range of cell ids) and by time (a STAC search by date, or the time axis of the Icechunk mosaic), and zoom in to a finer level. All addresses, identifiers and dates sit in one configuration cell. |
+| [02 – Mixing products on one grid: Sentinel-2, Sentinel-3 OLCI and SLSTR, Copernicus DEM and ERA5](notebooks/02-mixing-products-on-one-grid.ipynb) | Read the same cells from stores with different layouts (per parent cell, per overpass, global, mosaic) and resolutions, put them in one dataset without regridding, turn Sentinel-3 radiance into reflectance, mask clouds of both satellites, compare Sentinel-2 with Sentinel-3 and OLCI with SLSTR cell for cell and at coarser levels, build one spectrum from OLCI, SLSTR and Sentinel-2, compute a moisture index that needs both Sentinel-3 instruments, open a Sentinel-3 Synergy store, bring a whole Sentinel-2 pass up to the 50 km cells of the reanalysis, subset by region (a range of cell ids, or a longitude/latitude box with xdggs read through the Sentinel-2 mosaic) and by time (a STAC search by date, or the time axis of the Icechunk mosaic), and zoom in to a finer level. ERA5 stands in for DestinE ClimateDT, which cannot be published openly; with a ClimateDT store converted by [healpix-convert](https://github.com/GRID4EARTH/healpix-convert), the notebook runs on it instead. All addresses, identifiers and dates sit in one configuration cell. |
 
 ## Run them
 
@@ -15,6 +15,8 @@ python -m venv .venv
 .venv/bin/jupyter lab notebooks/
 ```
 
+The notebooks were run with Python 3.13. Notebook 02 takes a few minutes, most of it reading over HTTPS.
+
 The Sentinel-2 stores use the `hcc-sentinel2-pyramid` codec of [healpix-compress](https://github.com/GRID4EARTH/healpix-compress); zarr finds it once the package is installed.
 
 ## Data
@@ -23,4 +25,8 @@ The data are described in the [STAC catalogue](https://stac-browser.grid4earth.e
 
 ## Licence
 
-The code in these notebooks is released under the [Apache License 2.0](LICENSE).
+The code in these notebooks is released under the [Apache License 2.0](LICENSE). The data keep their own licences:
+
+- Contains modified Copernicus Sentinel data (2026), processed by GRID4EARTH.
+- Copernicus DEM GLO-30: © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018, provided under COPERNICUS by the European Union and ESA.
+- Contains modified Copernicus Climate Change Service information (2026) (ERA5). Neither the European Commission nor ECMWF is responsible for any use of this information.
