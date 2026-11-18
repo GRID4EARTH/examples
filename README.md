@@ -17,6 +17,21 @@ python -m venv .venv
 
 The notebooks were run with Python 3.13. Notebook 02 takes a few minutes, most of it reading over HTTPS.
 
+`requirements.txt` gives minimum versions. `requirements-lock.txt` pins the exact environment the notebooks were last run with (Python 3.13); install it instead to reproduce a run:
+
+```bash
+python3.13 -m venv .venv
+.venv/bin/pip install -r requirements-lock.txt
+```
+
+## Test them
+
+```bash
+.venv/bin/python tests/run_notebooks.py
+```
+
+runs every notebook in a fresh kernel and checks key results (cell counts, the agreement between Sentinel-2, OLCI and SLSTR, the mosaic against the STAC items, ...). It fails when a cell raises an error or a result is not the expected one; `--save` also writes the outputs back into the notebooks, and a name filter (`tests/run_notebooks.py 02`) runs one notebook only.
+
 The Sentinel-2 stores use the `hcc-sentinel2-pyramid` codec of [healpix-compress](https://github.com/GRID4EARTH/healpix-compress); zarr finds it once the package is installed.
 
 ## Data
